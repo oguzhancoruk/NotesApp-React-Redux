@@ -1,8 +1,8 @@
 import React from 'react';
 
-function AddContent() {
-  return <div className='ml-auto mr-5'>
-  <button className='btn btn-success rounded-pill '>ADD</button>
+function AddContent({handleSubmit}) {
+  return <div className='col-sm-8' >
+  <button className='btn btn-success rounded-pill  ' onClick={handleSubmit} >ADD</button>
 </div>
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 function SearchBox() {
   return <div className='search-box '>
-      <input  type="search" placeholder='Search' />
+      <input  type="text" placeholder='Search' />
   </div>;
 }
 
