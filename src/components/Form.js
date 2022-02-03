@@ -1,22 +1,33 @@
 import {useState} from 'react';
-import {useDispatch} from 'react-redux'
+import {useDispatch,useSelector} from 'react-redux'
+import { nanoid } from '@reduxjs/toolkit';
 import { addNotes } from '../redux/notes/notes.Slice';
 import AddContent from './AddContent';
 import ColorContent from './ColorContent';
+import SearchBox from './SearchBox';
 
 function Form() {
   const [tittle,setTittle]=useState("")
   const dispatch=useDispatch();
-
+  const colors=useSelector(state=>state.notes.activeColor)
   const handleSubmit=(e)=>{
     e.preventDefault();
-    dispatch(addNotes({id:'3',tittle}))
+    dispatch(addNotes({id:nanoid(),tittle,color:colors}))
   }
 
-  return <div className='container '>
+  const formSubmit =(e)=>{
+    e.preventDefault();
+  }
+
+  return <>
+  
+  <SearchBox/>
+  
+  
+  <div className='container '>
       <div className=' row justify-content-center '> 
       
-       <form >
+       <form onSubmit={formSubmit} >
            <textarea 
            className='text-area ' 
            placeholder='Enter your notes' 
@@ -37,6 +48,7 @@ function Form() {
       </div>
   
   </div> 
+  </>
 }
 
 export default Form;

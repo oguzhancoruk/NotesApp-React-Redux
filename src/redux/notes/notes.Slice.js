@@ -4,33 +4,23 @@ export const notesSlice=createSlice({
 
     name:'notes',
     initialState:{
-        items:[{
-            id:"1",
-            tittle:"ilk yazı"
-
-        }],
-        colors:[{
-            color:"danger"
-        },
-        {
-            color:"success"
-        },
-        {
-            color:"primary"
-        },
-        {
-            color:"warning"
-        }
-
-    ]
+        items:[],
+       activeColor:'white',
+       search:'',
 
     },
     reducers:{
         addNotes:(state,action)=>{
             state.items.push(action.payload)
+        },
+        changeColors:(state,action)=>{
+            state.activeColor=action.payload;
+        },
+        filterTitle:(state,action)=>{
+            state.search=action.payload;
         }
     }
 })
 
-export const {addNotes}=notesSlice.actions;
+export const {addNotes,changeColors, filterTitle}=notesSlice.actions;
 export default notesSlice.reducer;
